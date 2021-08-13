@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.0.3.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\demo.Common\demo.Common.csproj" />
+    <ProjectReference Include="..\demo.HttpClient\demo.HttpClient.csproj" />
+    <ProjectReference Include="..\demo.Model\demo.Model.csproj" />
+  </ItemGroup>
+
+</Project>

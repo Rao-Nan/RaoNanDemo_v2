@@ -1,0 +1,16 @@
+demo.Common/bin/
+.vs/
+demo.Common/obj/
+demo.Facebook/bin/
+demo.Facebook/obj/
+demo.HttpClient/obj/
+demo.Job/obj/
+demo.Model/obj/
+demo.Repository/obj/
+demo.Service/bin/
+demo.Service/obj/
+demo_v2/bin/
+demo_v2/obj/
+demo.Repository/bin/
+demo.Model/bin/
+demo.Job/bin/
