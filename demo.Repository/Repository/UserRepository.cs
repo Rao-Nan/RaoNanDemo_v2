@@ -12,7 +12,7 @@ namespace demo.Repository.Repository
     {
         public async Task<User> GetUser() 
         {
-            return new User() { Nmae = "nolan" }; 
+            return new User() { Name = "nolan" }; 
         }
     }
 }

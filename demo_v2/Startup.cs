@@ -1,5 +1,6 @@
 using Autofac;
 using demo.Common;
+using demo.Job;
 using demo_v2.App_Start;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Quartz;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
@@ -35,6 +37,8 @@ namespace demo_v2
             {
                 options.IdleTimeout = TimeSpan.FromHours(2);
             });
+            services.AddQuartz();
+
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -65,6 +69,10 @@ namespace demo_v2
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            var scheduler = app.ApplicationServices.GetService<IScheduler>();
+            app.InitJob(scheduler);
+            scheduler.Start();
         }
     }
 }

@@ -14,3 +14,4 @@ demo_v2/obj/
 demo.Repository/bin/
 demo.Model/bin/
 demo.Job/bin/
+demo.HttpClient/bin/

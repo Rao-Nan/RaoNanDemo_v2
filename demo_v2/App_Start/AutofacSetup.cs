@@ -15,10 +15,17 @@ namespace demo_v2.App_Start
 
             var servicesDllFile = Path.Combine(basePath, "demo.Service.dll");
             var repositoryDllFile = Path.Combine(basePath, "demo.Repository.dll");
+            var jobDllFile = Path.Combine(basePath, "demo.Job.dll");
 
             if (!(File.Exists(servicesDllFile)) || !(File.Exists(repositoryDllFile)))
             {
                 var msg = "Service.dll 或者 Repository.dll 丢失，请检查 bin 文件夹.";
+                throw new Exception(msg);
+            }
+
+            if (!(File.Exists(jobDllFile)))
+            {
+                var msg = "job.dll 或者 job.dll 丢失，请检查 bin 文件夹.";
                 throw new Exception(msg);
             }
 
@@ -34,7 +41,11 @@ namespace demo_v2.App_Start
                       .AsImplementedInterfaces()
                       .InstancePerDependency();
 
-           
+            // 获取 Service.dll 程序集服务，并注册
+            var assemblysJob = Assembly.LoadFrom(jobDllFile);
+            builder.RegisterAssemblyTypes(assemblysJob)
+                      .AsImplementedInterfaces()
+                      .InstancePerDependency();
 
             #endregion
         }

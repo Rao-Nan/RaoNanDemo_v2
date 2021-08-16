@@ -8,6 +8,6 @@ namespace demo.Model
 {
     public class User
     {
-        public string Nmae { get; set; }
+        public string Name { get; set; }
     }
 }
