@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using demo.Common;
 using System;
 using System.IO;
 using System.Reflection;
@@ -10,6 +11,10 @@ namespace demo_v2.App_Start
         protected override void Load(ContainerBuilder builder)
         {
             var basePath = AppContext.BaseDirectory;
+            //RegisterDependencies
+            builder.RegisterDependencies();
+
+
 
             #region 服务注入
 
@@ -23,11 +28,6 @@ namespace demo_v2.App_Start
                 throw new Exception(msg);
             }
 
-            if (!(File.Exists(jobDllFile)))
-            {
-                var msg = "job.dll 或者 job.dll 丢失，请检查 bin 文件夹.";
-                throw new Exception(msg);
-            }
 
             // 获取 Repository.dll 程序集服务，并注册
             var assemblysRepository = Assembly.LoadFrom(repositoryDllFile);
@@ -41,11 +41,6 @@ namespace demo_v2.App_Start
                       .AsImplementedInterfaces()
                       .InstancePerDependency();
 
-            // 获取 Service.dll 程序集服务，并注册
-            var assemblysJob = Assembly.LoadFrom(jobDllFile);
-            builder.RegisterAssemblyTypes(assemblysJob)
-                      .AsImplementedInterfaces()
-                      .InstancePerDependency();
 
             #endregion
         }

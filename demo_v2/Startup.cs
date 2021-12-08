@@ -39,6 +39,7 @@ namespace demo_v2
             });
             services.AddQuartz();
 
+            services.AddHostedService<demo.Job.JobBaseService>();
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
